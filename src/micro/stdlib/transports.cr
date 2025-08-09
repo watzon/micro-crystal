@@ -2,3 +2,4 @@
 require "./transports/http"
 require "./transports/http2"
 require "./transports/websocket_transport"
+require "./transports/loopback_transport"

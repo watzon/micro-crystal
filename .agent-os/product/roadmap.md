@@ -23,7 +23,26 @@
   - [x] Response transformations and aggregation routes (parallel fan-out)
   - [x] Retries and circuit breaker on backend calls
 
-## Phase 1: API gateway enhancements
+## Phase 1: Testing utilities
+
+**Goal:** Enable in-process integration testing for services and the gateway without running network servers
+**Success Criteria:** Loopback transport, service/gateway harnesses, fixtures for registry/broker, auth/context helpers, pub/sub capture, and example specs
+
+### Features
+- [x] Loopback (in-process) transport with codec negotiation
+- [x] Service test harness to start a service instance and invoke handlers via typed clients
+- [x] Gateway test client that runs requests through the middleware chain and router without binding a port
+- [ ] Registry/broker fixtures (`with_memory_registry`, `with_memory_broker`, `reset_registry`)
+- [ ] Auth helpers for tests (mock identity, roles, JWT, mTLS)
+- [ ] Pub/sub testing helpers (capture published messages, synchronous delivery for specs)
+- [x] Spec helpers and example tests under `examples/` using the harness
+
+### Dependencies
+- Loopback transport component
+- Minor `ServiceBase` extensibility to plug loopback transport cleanly
+- Documentation and example updates
+
+## Phase 2: API gateway enhancements
 
 **Goal:** Polish and extend gateway capabilities beyond the core
 **Success Criteria:** Route generation from annotations, per-route middleware/auth, and caching
@@ -38,7 +57,7 @@
 ### Dependencies
 - Schema extraction refinement for route generation
 
-## Phase 2: Observability
+## Phase 3: Observability
 
 **Goal:** Production-friendly monitoring and tracing
 **Success Criteria:** Unified Prometheus metrics and OpenTelemetry tracing integrated
@@ -52,7 +71,7 @@
 ### Dependencies
 - Metrics exporter finalization
 
-## Phase 3: Kubernetes integration
+## Phase 4: Kubernetes integration
 
 **Goal:** First-class Kubernetes auto-integration for discovery, config, and ops
 **Success Criteria:** Services/gateway auto-discover peers via the Kubernetes API with zero custom wiring; deployable via Helm with sensible defaults
@@ -83,7 +102,7 @@
 - TLS verification using cluster CA
 - Example manifests and Helm packaging
 
-## Phase 4: CLI & codegen
+## Phase 5: CLI & codegen
 
 **Goal:** Developer tooling for scaffolding and generation
 **Success Criteria:** `micro` CLI with new, generate, run commands

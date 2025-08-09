@@ -81,6 +81,11 @@ module Micro
     def self.websocket(options : Core::Transport::Options = Core::Transport::Options.new) : Core::Transport
       Stdlib::Transports::WebSocketTransport.new(options)
     end
+
+    # In-process transport for tests and harnesses
+    def self.loopback(options : Core::Transport::Options = Core::Transport::Options.new) : Core::Transport
+      Stdlib::Transports::LoopbackTransport.new(options)
+    end
   end
 
   module Codecs
@@ -119,10 +124,12 @@ end
 require "./micro/stdlib/codecs"
 require "./micro/stdlib/transports/http"
 require "./micro/stdlib/transports/websocket_transport"
+require "./micro/stdlib/transports/loopback_transport"
 require "./micro/stdlib/transports/websocket_stream"
 require "./micro/stdlib/registries/memory_registry"
 require "./micro/stdlib/registries/consul"
 require "./micro/stdlib/middleware"
+require "./micro/stdlib/testing"
 require "./micro/stdlib/service"
 require "./micro/stdlib/client"
 

@@ -1,2 +1,6 @@
 require "spec"
-require "../src/demo"
+require "micro"
+require "micro/gateway"
+require "micro/stdlib/testing"
+require "../src/services/catalog"
+require "../src/services/orders"

@@ -62,7 +62,10 @@ module Micro::Stdlib
           address = parts.first
           port = (parts.last? || "8080").to_i
 
-          metadata = options.metadata.dup
+          metadata = {} of String => String
+          options.metadata.each do |k, vs|
+            metadata[k] = vs.join(",")
+          end
           metadata["endpoints"] = @handlers.keys.join(",")
 
           service_def = Micro::Core::Registry::Service.new(
@@ -74,7 +77,7 @@ module Micro::Stdlib
                 id: "#{options.name}-#{UUID.random}",
                 address: address,
                 port: port,
-                metadata: HTTP::Headers.new
+                metadata: {} of String => String
               ),
             ]
           )
@@ -116,7 +119,7 @@ module Micro::Stdlib
             Micro::Core::Registry::Service.new(
               name: options.name,
               version: options.version,
-              metadata: HTTP::Headers.new,
+              metadata: {} of String => String,
               nodes: [] of Micro::Core::Registry::Node
             )
           )
@@ -194,7 +197,7 @@ module Micro::Stdlib
           status: ctx_response.status,
           body: response_body,
           content_type: response_codec.content_type,
-          headers: ctx_response.headers.to_h.transform_values(&.first)
+          headers: ctx_response.headers
         )
       rescue ex
         Log.error(exception: ex) { "Error handling request" }
