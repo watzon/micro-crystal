@@ -1,0 +1,196 @@
+---
+alwaysApply: true
+---
+
+## Project context
+
+µCrystal (micro-crystal) is a batteries-included microservice toolkit for Crystal (>= 1.12). It mirrors and improves upon Go-Micro with a pluggable architecture: transports (HTTP/WebSocket), codecs (JSON/MessagePack), registries (Memory/Consul), brokers (Memory/NATS), selectors (Round Robin/Random), and macro-driven service annotations.
+
+Key directories:
+- `src/micro` — core interfaces and stdlib implementations
+- `spec` — tests (Crystal spec)
+- `docs` — documentation (API, guides, components)
+- `examples` — runnable examples and demos
+
+## Languages and tooling
+
+- **Primary language**: Crystal
+- **Package manager**: `shards`
+- **Testing**: `crystal spec`
+- **Linter**: `ameba` (script at `bin/ameba` present)
+- **Formatter**: `crystal tool format`
+- **Language Server**: Prefer `ameba-ls` over `crystalline` for editor LSP features
+
+## Commands
+
+- **Install dependencies**: `shards install`
+- **Run tests**: `crystal spec`
+- **Run linter**: `./bin/ameba` (fallback: `ameba`)
+- **Format code**: `crystal tool format`
+- **Build**: `shards build`
+- **Generate docs**: `crystal docs`
+
+Always prefer absolute paths for tool calls inside this workspace: `/Users/watzon/Projects/personal/micro-crystal/...`.
+
+## Editing and execution rules
+
+- Do not run any development server unless explicitly instructed.
+- Prefer moving/renaming files (using `mv`) over recreating them when refactoring.
+- Before editing, scan relevant files in `src/`, `spec/`, `docs/`, and `examples/` to understand intent and usage.
+- After substantive code edits, run tests. If changing formatting or style only, run the formatter and linter.
+- Keep responses concise. Use code blocks only for relevant snippets.
+
+## AI assistant behavior
+
+- Start exploration with high-level semantic search of the codebase; then narrow to specific files.
+- Parallelize read-only scans (multiple file reads/searches) to accelerate context gathering.
+- Use Context7 to fetch up-to-date external documentation and guides when needed.
+- When citing code, use file-backed citations with line numbers when possible.
+- Provide a brief status update before large actions and a short, high-signal summary at the end.
+- Do not over-format messages. Use `##`/`###` headings and short bullet points for scannability.
+- Respect project style and Crystal idioms; avoid introducing inconsistent patterns.
+
+## Code style (Crystal)
+
+- Use meaningful, descriptive names (no 1–2 character identifiers). Functions are verbs; variables are nouns.
+- Prefer early returns and shallow nesting. Handle errors and edge cases first.
+- Add comments sparingly for non-obvious logic; focus on the "why".
+- Match existing formatting; keep lines readable; avoid unrelated reformatting.
+
+## Testing and linting policy
+
+- Run `crystal spec` after changes that could affect behavior. Fix failing tests before proceeding.
+- Run `./bin/ameba` and `crystal tool format` before shipping edits touching Crystal files.
+- Specs live under `spec/`; use them as executable documentation for intended behavior.
+
+## Repository awareness
+
+- Default implementations live under `src/micro/stdlib/` (e.g., HTTP transport, JSON codec, Consul registry, NATS broker).
+- Core abstractions live under `src/micro/core/`.
+- Gateway and API DSL under `src/micro/gateway/`.
+
+## Documentation-first approach
+
+- Prefer consulting `docs/` (API, components, guides) and `examples/` to infer intended usage before changing public APIs.
+- Keep public API changes consistent with documentation; update docs/examples when APIs change.
+
+## Custom slash commands (Claude Code)
+
+- Look for custom slash commands in `.claude/commands` within the project.
+- **Format**: `/namespace:command-name`
+  - Subdirectories map to the `namespace`.
+  - The Markdown filename (without `.md`) is the `command-name`.
+- All commands are Markdown files with instructions to follow. The assistant should execute the intent described by the command file, optionally substituting any inline placeholders.
+
+Examples:
+- `.claude/commands/dev/start.md` → `/dev:start`
+- `.claude/commands/task/breakdown.md` → `/task:breakdown`
+
+## Safeguards
+
+- Do not introduce destructive changes without clear rationale. Favor additive, backward-compatible edits.
+- Honor the project's security posture (JWT, mTLS, RBAC). Avoid weakening defaults.
+
+## When in doubt
+
+- Read the nearest interface in `src/micro/core/` and the corresponding stdlib implementation.
+- Check `spec/` for expected behavior and edge cases.
+- Consult `docs/components/` for component-specific contracts.
+
+
+## Project context
+
+µCrystal (micro-crystal) is a batteries-included microservice toolkit for Crystal (>= 1.12). It mirrors and improves upon Go-Micro with a pluggable architecture: transports (HTTP/WebSocket), codecs (JSON/MessagePack), registries (Memory/Consul), brokers (Memory/NATS), selectors (Round Robin/Random), and macro-driven service annotations.
+
+Key directories:
+- `src/micro` — core interfaces and stdlib implementations
+- `spec` — tests (Crystal spec)
+- `docs` — documentation (API, guides, components)
+- `examples` — runnable examples and demos
+
+## Languages and tooling
+
+- **Primary language**: Crystal
+- **Package manager**: `shards`
+- **Testing**: `crystal spec`
+- **Linter**: `ameba` (script at `bin/ameba` present)
+- **Formatter**: `crystal tool format`
+- **Language Server**: Prefer `ameba-ls` over `crystalline` for editor LSP features
+
+## Commands
+
+- **Install dependencies**: `shards install`
+- **Run tests**: `crystal spec`
+- **Run linter**: `./bin/ameba` (fallback: `ameba`)
+- **Format code**: `crystal tool format`
+- **Build**: `shards build`
+- **Generate docs**: `crystal docs`
+
+Always prefer absolute paths for tool calls inside this workspace: `/Users/watzon/Projects/personal/micro-crystal/...`.
+
+## Editing and execution rules
+
+- Do not run any development server unless explicitly instructed.
+- Prefer moving/renaming files (using `mv`) over recreating them when refactoring.
+- Before editing, scan relevant files in `src/`, `spec/`, `docs/`, and `examples/` to understand intent and usage.
+- After substantive code edits, run tests. If changing formatting or style only, run the formatter and linter.
+- Keep responses concise. Use code blocks only for relevant snippets.
+
+## AI assistant behavior
+
+- Start exploration with high-level semantic search of the codebase; then narrow to specific files.
+- Parallelize read-only scans (multiple file reads/searches) to accelerate context gathering.
+- Use Context7 to fetch up-to-date external documentation and guides when needed.
+- When citing code, use file-backed citations with line numbers when possible.
+- Provide a brief status update before large actions and a short, high-signal summary at the end.
+- Do not over-format messages. Use `##`/`###` headings and short bullet points for scannability.
+- Respect project style and Crystal idioms; avoid introducing inconsistent patterns.
+
+## Code style (Crystal)
+
+- Use meaningful, descriptive names (no 1–2 character identifiers). Functions are verbs; variables are nouns.
+- Prefer early returns and shallow nesting. Handle errors and edge cases first.
+- Add comments sparingly for non-obvious logic; focus on the "why".
+- Match existing formatting; keep lines readable; avoid unrelated reformatting.
+
+## Testing and linting policy
+
+- Run `crystal spec` after changes that could affect behavior. Fix failing tests before proceeding.
+- Run `./bin/ameba` and `crystal tool format` before shipping edits touching Crystal files.
+- Specs live under `spec/`; use them as executable documentation for intended behavior.
+
+## Repository awareness
+
+- Default implementations live under `src/micro/stdlib/` (e.g., HTTP transport, JSON codec, Consul registry, NATS broker).
+- Core abstractions live under `src/micro/core/`.
+- Gateway and API DSL under `src/micro/gateway/`.
+
+## Documentation-first approach
+
+- Prefer consulting `docs/` (API, components, guides) and `examples/` to infer intended usage before changing public APIs.
+- Keep public API changes consistent with documentation; update docs/examples when APIs change.
+
+## Custom slash commands (Claude Code)
+
+- Look for custom slash commands in `.claude/commands` within the project.
+- **Format**: `/namespace:command-name`
+  - Subdirectories map to the `namespace`.
+  - The Markdown filename (without `.md`) is the `command-name`.
+- All commands are Markdown files with instructions to follow. The assistant should execute the intent described by the command file, optionally substituting any inline placeholders.
+
+Examples:
+- `.claude/commands/dev/start.md` → `/dev:start`
+- `.claude/commands/task/breakdown.md` → `/task:breakdown`
+
+## Safeguards
+
+- Do not introduce destructive changes without clear rationale. Favor additive, backward-compatible edits.
+- Honor the project's security posture (JWT, mTLS, RBAC). Avoid weakening defaults.
+
+## When in doubt
+
+- Read the nearest interface in `src/micro/core/` and the corresponding stdlib implementation.
+- Check `spec/` for expected behavior and edge cases.
+- Consult `docs/components/` for component-specific contracts.
+
+

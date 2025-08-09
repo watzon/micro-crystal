@@ -1,0 +1,42 @@
+name: micro
+version: 0.1.0
+
+authors:
+  - Chris Watson <cawatson1993@gmail.com>
+
+description: |
+  A batteries-included microservice toolkit for Crystal that mirrors
+  and improves upon Go-Micro. Provides composable, pluggable components
+  for building blazing fast microservices.
+
+crystal: ">= 1.12.0"
+
+license: Apache-2.0
+
+dependencies:
+  # Add dependencies here as we implement features
+  msgpack:
+    github: crystal-community/msgpack-crystal
+    version: ">= 1.3.1"
+  http2:
+    github: ysbaddaden/http2
+    branch: master
+  nats:
+    github: jgaskins/nats
+    version: ~> 1.4.0
+  jwt:
+    github: crystal-community/jwt
+    version: ~> 1.6.0
+  radix:
+    github: luislavena/radix
+    version: ~> 0.4.1
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+  ameba:
+    github: crystal-ameba/ameba
+
+targets:
+  micro:
+    main: src/cli.cr

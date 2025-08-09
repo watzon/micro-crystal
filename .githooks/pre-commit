@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Pre-commit hook to enforce Crystal formatting
+
+# Check if crystal is available
+if ! command -v crystal &> /dev/null; then
+    echo "Crystal is not installed. Skipping format check."
+    exit 0
+fi
+
+# Run format check
+echo "Checking Crystal code formatting..."
+if ! crystal tool format --check > /dev/null 2>&1; then
+    echo "❌ Code formatting issues detected!"
+    echo ""
+    echo "Please run 'crystal tool format' to fix formatting issues."
+    echo "The following files need formatting:"
+    crystal tool format --check 2>&1 | grep "^formatting" | sed "s/formatting '\(.*\)' produced changes/  - \1/"
+    echo ""
+    echo "To automatically fix these issues, run:"
+    echo "  crystal tool format"
+    echo ""
+    exit 1
+fi
+
+echo "✅ Crystal code formatting check passed!"
+exit 0

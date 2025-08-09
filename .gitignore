@@ -1,0 +1,44 @@
+# Claude Code Infrastructure
+.claude/session-state.md
+.claude/hooks/*.log
+.claude/.env.local
+CLAUDE.local.md
+
+# Common
+.env
+.env.local
+node_modules/
+.DS_Store
+*.log
+dist/
+build/
+*.pyc
+__pycache__/
+.venv/
+venv/
+
+# Crystal (root project)
+# Keep tracked scripts in root `bin/` and top-level `docs/` in this repo.
+/lib/
+/.crystal/
+/.shards/
+*.dwarf
+
+# Crystal (subprojects like `examples/**`)
+**/.crystal/
+**/.shards/
+examples/**/lib/
+examples/**/bin/
+examples/**/docs/
+examples/**/tmp/
+**/*.dwarf
+
+# Editors/IDEs
+.vscode/
+.idea/
+.history
+
+# macOS cruft
+.Trashes
+.AppleDouble
+.LSOverride

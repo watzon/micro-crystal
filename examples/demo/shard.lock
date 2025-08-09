@@ -1,0 +1,38 @@
+version: 2.0
+shards:
+  base32:
+    git: https://github.com/jgaskins/base32.git
+    version: 0.1.1+git.commit.18f5647c42dae4de654e3003825fab43dc95b029
+
+  bindata:
+    git: https://github.com/spider-gazelle/bindata.git
+    version: 2.1.0
+
+  http2:
+    git: https://github.com/ysbaddaden/http2.git
+    version: 0.1.0+git.commit.f6a02189434270f110b866304154e2df1ceaa281
+
+  jwt:
+    git: https://github.com/crystal-community/jwt.git
+    version: 1.6.1
+
+  micro:
+    path: ../../
+    version: 0.1.0
+
+  msgpack:
+    git: https://github.com/crystal-community/msgpack-crystal.git
+    version: 1.3.4
+
+  nats:
+    git: https://github.com/jgaskins/nats.git
+    version: 1.4.0
+
+  openssl_ext:
+    git: https://github.com/spider-gazelle/openssl_ext.git
+    version: 2.4.4
+
+  radix:
+    git: https://github.com/luislavena/radix.git
+    version: 0.4.1
+

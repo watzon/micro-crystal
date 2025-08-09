@@ -1,0 +1,23 @@
+name: demo
+version: 0.1.0
+
+authors:
+  - Chris Watson <cawatson1993@gmail.com>
+
+targets:
+  catalog:
+    main: src/catalog.cr
+  orders:
+    main: src/orders.cr
+  gateway:
+    main: src/gateway.cr
+  dev:
+    main: src/dev.cr
+
+crystal: '>= 1.17.1'
+
+license: MIT
+
+dependencies:
+  micro:
+    path: ../../
