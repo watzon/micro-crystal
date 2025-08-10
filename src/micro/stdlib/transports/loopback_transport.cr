@@ -217,5 +217,3 @@ module Micro::Stdlib::Transports
   class LoopbackServerSocket < BaseLoopbackSocket
   end
 end
-
-

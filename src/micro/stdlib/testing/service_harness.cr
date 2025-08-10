@@ -20,7 +20,7 @@ module Micro::Stdlib::Testing
       name : String,
       version : String = "latest",
       address : String? = nil,
-      codec : Micro::Core::Codec = Micro::Stdlib::Codecs::JSON.new
+      codec : Micro::Core::Codec = Micro::Stdlib::Codecs::JSON.new,
     )
       resolved_address = address || self.class.default_address_for(name)
       @address = normalize_address(resolved_address)
@@ -118,5 +118,3 @@ module Micro::Stdlib::Testing
     end
   end
 end
-
-

@@ -20,7 +20,7 @@ module Micro::Stdlib::Testing
     def initialize(
       config : Micro::Gateway::Config,
       service_addresses : Hash(String, String)? = nil,
-      use_cors : Bool = true
+      use_cors : Bool = true,
     )
       # Build gateway from config
       @gateway = Micro::Gateway::APIGateway.new(config)
@@ -205,5 +205,3 @@ module Micro::Stdlib::Testing
     end
   end
 end
-
-

@@ -80,5 +80,3 @@ end
 macro gateway_client(name)
   Micro::Stdlib::Testing::GatewayRegistry.get({{name}})
 end
-
-

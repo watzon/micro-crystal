@@ -10,6 +10,7 @@ module Micro::Macros
       "KeyError"                             => 400,
       "JSON::ParseException"                 => 400,
       "Micro::Core::CodecError"              => 400,
+      "Micro::Core::BadRequestError"         => 400,
       "Micro::Core::NotFoundError"           => 404,
       "Micro::Core::UnauthorizedError"       => 401,
       "Micro::Core::ForbiddenError"          => 403,
@@ -76,16 +77,35 @@ end
 
 # Define standard error types that services can use
 module Micro::Core
-  # Base class for client errors (4xx)
-  class ClientError < Exception
-    getter status_code : Int32
+  # Base class for all service errors
+  class ServiceError < Exception
+    getter code : String?
+    getter status : Int32
+    getter details : Hash(String, String)?
 
-    def initialize(@message : String? = nil, @status_code : Int32 = 400)
+    def initialize(@message : String? = nil, @code : String? = nil, @status : Int32 = 500, @details : Hash(String, String)? = nil)
       super(@message)
     end
   end
 
+  # Base class for client errors (4xx)
+  class ClientError < ServiceError
+    def initialize(message : String? = nil, status_code : Int32 = 400)
+      super(message, nil, status_code)
+    end
+
+    def status_code : Int32
+      status
+    end
+  end
+
   # Specific error types
+  class BadRequestError < ClientError
+    def initialize(message : String? = "Bad request")
+      super(message, 400)
+    end
+  end
+
   class NotFoundError < ClientError
     def initialize(message : String? = "Not found")
       super(message, 404)
@@ -127,11 +147,13 @@ module Micro::Core
   end
 
   # Base class for server errors (5xx)
-  class ServerError < Exception
-    getter status_code : Int32
+  class ServerError < ServiceError
+    def initialize(message : String? = nil, status_code : Int32 = 500)
+      super(message, nil, status_code)
+    end
 
-    def initialize(@message : String? = nil, @status_code : Int32 = 500)
-      super(@message)
+    def status_code : Int32
+      status
     end
   end
 

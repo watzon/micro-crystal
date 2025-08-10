@@ -7,10 +7,10 @@ describe "Demo integration" do
       ctx.response.status = 200
       ctx.response.body = JSON::Any.new([
         JSON::Any.new({
-          "id" => JSON::Any.new("p-1"),
-          "name" => JSON::Any.new("Sample Product"),
+          "id"    => JSON::Any.new("p-1"),
+          "name"  => JSON::Any.new("Sample Product"),
           "price" => JSON::Any.new(9.99),
-        })
+        }),
       ])
     end
     handle("/get_product") do |ctx|
@@ -30,8 +30,8 @@ describe "Demo integration" do
       if id == "p-1"
         ctx.response.status = 200
         ctx.response.body = JSON::Any.new({
-          "id" => JSON::Any.new("p-1"),
-          "name" => JSON::Any.new("Sample Product"),
+          "id"    => JSON::Any.new("p-1"),
+          "name"  => JSON::Any.new("Sample Product"),
           "price" => JSON::Any.new(9.99),
         })
       else
@@ -45,21 +45,21 @@ describe "Demo integration" do
     handle("/create_order") do |ctx|
       ctx.response.status = 200
       ctx.response.body = JSON::Any.new({
-        "id" => JSON::Any.new("o-1"),
+        "id"    => JSON::Any.new("o-1"),
         "total" => JSON::Any.new(19.98),
         "items" => JSON::Any.new([
-          JSON::Any.new({"product_id" => JSON::Any.new("p-1"), "quantity" => JSON::Any.new(2)})
-        ])
+          JSON::Any.new({"product_id" => JSON::Any.new("p-1"), "quantity" => JSON::Any.new(2)}),
+        ]),
       })
     end
     handle("/get_order") do |ctx|
       ctx.response.status = 200
       ctx.response.body = JSON::Any.new({
-        "id" => JSON::Any.new("o-1"),
+        "id"    => JSON::Any.new("o-1"),
         "total" => JSON::Any.new(19.98),
         "items" => JSON::Any.new([
-          JSON::Any.new({"product_id" => JSON::Any.new("p-1"), "quantity" => JSON::Any.new(2)})
-        ])
+          JSON::Any.new({"product_id" => JSON::Any.new("p-1"), "quantity" => JSON::Any.new(2)}),
+        ]),
       })
     end
   end

@@ -241,6 +241,28 @@ module Micro
   annotation RequirePolicy
   end
 
+  # Apply rate limiting to methods
+  #
+  # Takes arguments:
+  # - requests : Int32 - Number of requests allowed per time period
+  # - per : Int32 - Time period in seconds
+  # - key : String? - Rate limit key strategy (default: "ip", options: "ip", "user", "custom")
+  # - burst : Int32? - Optional burst allowance
+  #
+  # Example:
+  # ```
+  # @[Micro::RateLimit(requests: 100, per: 60)] # 100 requests per minute
+  # def search_products(query : String) : Array(Product)
+  #   # Search implementation
+  # end
+  #
+  # @[Micro::RateLimit(requests: 10, per: 60, burst: 5)] # 10/min with burst of 5
+  # def heavy_operation
+  # end
+  # ```
+  annotation RateLimit
+  end
+
   # Documents a method parameter for OpenAPI generation
   #
   # Available fields:

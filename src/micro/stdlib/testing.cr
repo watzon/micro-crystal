@@ -11,4 +11,3 @@ module Micro::Stdlib::Testing
     GatewayTestClient.new(builder.config)
   end
 end
-
