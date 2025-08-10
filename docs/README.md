@@ -1,4 +1,16 @@
-# Getting started with µCrystal
+# µCrystal documentation
+
+Welcome to the documentation for µCrystal. You'll find guides, conceptual overviews, and API references organized by topic. If you're new, start with the getting started section below. Otherwise, jump to concepts, guides, or reference.
+
+## Sections
+
+- Concepts: [./concepts/](./concepts/)
+- Guides: [./guides/](./guides/)
+- Reference: [./reference/](./reference/)
+- Examples: [./examples/](./examples/)
+- Deployment: [./deployment/](./deployment/)
+
+## Getting started
 
 ## Table of contents
 
