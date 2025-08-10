@@ -26,6 +26,17 @@ module Micro::Stdlib::Codecs
     end
 
     # Marshal an object to MessagePack bytes
+    def marshal(obj : Array(::JSON::Any)) : Bytes
+      native = obj.map { |v| convert_json_any_to_native(v) }
+      native.to_msgpack
+    end
+
+    def marshal(obj : Hash(String, ::JSON::Any)) : Bytes
+      native = {} of String => MsgPackValue
+      obj.each { |k, v| native[k] = convert_json_any_to_native(v) }
+      native.to_msgpack
+    end
+
     def marshal(obj : Object) : Bytes
       case obj
       when ::JSON::Any

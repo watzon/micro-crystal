@@ -91,11 +91,8 @@ module Micro::Core
       when JSON::Any
         body.to_json.to_slice
       when Hash, Array
-        if codec
-          codec.marshal(body)
-        else
-          body.to_json.to_slice
-        end
+        # Marshal generic Hash/Array via JSON to avoid codec-specific type issues
+        body.to_json.to_slice
       else
         if codec
           codec.marshal(body)

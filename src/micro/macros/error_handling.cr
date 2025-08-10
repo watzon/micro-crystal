@@ -58,7 +58,7 @@ module Micro::Macros
       rescue ex : ::Micro::Core::CodecError
         {{context}}.response.status = 400
         {{context}}.response.body = {"error" => "Invalid request format: #{ex.message}", "type" => ex.class.name}
-      rescue ex : ArgumentError, KeyError
+      rescue ex : ArgumentError | KeyError
         {{context}}.response.status = 400
         {{context}}.response.body = {"error" => ex.message || "Bad request", "type" => ex.class.name}
       rescue ex : Exception
