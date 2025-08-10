@@ -36,6 +36,7 @@ development_dependencies:
     github: manastech/webmock.cr
   ameba:
     github: crystal-ameba/ameba
+    version: ~> 1.6.4
 
 targets:
   micro:
