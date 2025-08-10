@@ -61,6 +61,13 @@ module Micro::Stdlib::Middleware
           context.set("user_id", user_id)
         end
 
+        # Store additional metadata if provided
+        if meta = result.metadata
+          meta.each do |key, value|
+            context.set(key, value)
+          end
+        end
+
         # Continue chain
         next_middleware.try(&.call(context))
       when AuthResult::Unauthorized
