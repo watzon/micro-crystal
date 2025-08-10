@@ -72,9 +72,17 @@ module Micro::Stdlib::Middleware
       spawn do
         begin
           next_middleware.try(&.call(context))
-          done.send(nil)
+          begin
+            done.send(nil)
+          rescue Channel::ClosedError
+            # Timeout branch closed channel; ignore
+          end
         rescue ex
-          exception.send(ex)
+          begin
+            exception.send(ex)
+          rescue Channel::ClosedError
+            # Timeout branch closed channel; ignore
+          end
         end
       end
 

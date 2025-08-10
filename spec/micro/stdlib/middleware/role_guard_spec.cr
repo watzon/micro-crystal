@@ -7,7 +7,7 @@ describe Micro::Stdlib::Middleware::RoleGuard do
     res = Micro::Core::Response.new
     ctx = Micro::Core::Context.new(req, res)
 
-    mw = Micro::Stdlib::Middleware::RoleGuard.new(["admin"]) 
+    mw = Micro::Stdlib::Middleware::RoleGuard.new(["admin"])
     mw.call(ctx, ->(c : Micro::Core::Context) { c.response.body = {"ok" => JSON::Any.new(true)} })
     ctx.response.status.should eq 401
   end
@@ -21,7 +21,7 @@ describe Micro::Stdlib::Middleware::RoleGuard do
     principal = Micro::Core::Auth::Principal.new(id: "1", username: "u1", roles: [role])
     ctx.set("auth:principal", principal)
 
-    mw = Micro::Stdlib::Middleware::RoleGuard.new(["admin"]) 
+    mw = Micro::Stdlib::Middleware::RoleGuard.new(["admin"])
     mw.call(ctx, ->(c : Micro::Core::Context) { c.response.body = {"ok" => JSON::Any.new(true)} })
     ctx.response.status.should eq 200
   end
