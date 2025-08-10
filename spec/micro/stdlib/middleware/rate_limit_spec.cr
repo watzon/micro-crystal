@@ -28,5 +28,3 @@ describe Micro::Stdlib::Middleware::RateLimitMiddleware do
     ctx4.response.status.should eq 200
   end
 end
-
-

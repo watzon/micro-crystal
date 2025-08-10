@@ -30,5 +30,3 @@ describe Micro::Stdlib::Middleware::RequestSizeMiddleware do
     ctx.response.status.should eq 200
   end
 end
-
-

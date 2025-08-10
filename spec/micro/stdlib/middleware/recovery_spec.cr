@@ -8,12 +8,10 @@ describe Micro::Stdlib::Middleware::RecoveryMiddleware do
     ctx = Micro::Core::Context.new(req, res)
 
     mw = Micro::Stdlib::Middleware::RecoveryMiddleware.new
-    mw.call(ctx, ->(c : Micro::Core::Context) { raise "kaboom" })
+    mw.call(ctx, ->(_c : Micro::Core::Context) { raise "kaboom" })
 
     ctx.response.status.should eq 500
     body = JSON.parse(String.new(Micro::Core::MessageEncoder.response_body_to_bytes(ctx.response.body)))
     body["error"].as_s.should contain("Internal server error")
   end
 end
-
-

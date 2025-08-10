@@ -18,5 +18,3 @@ describe Micro::Stdlib::Middleware::TimeoutMiddleware do
     body["error"].as_s.should contain("timeout")
   end
 end
-
-

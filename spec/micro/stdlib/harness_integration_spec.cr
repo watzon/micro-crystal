@@ -45,5 +45,3 @@ describe Micro::Stdlib::Testing::ServiceHarness do
     h.try(&.stop)
   end
 end
-
-

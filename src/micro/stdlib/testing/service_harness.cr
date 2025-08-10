@@ -75,14 +75,12 @@ module Micro::Stdlib::Testing
 
     # Stop the service and restore env
     def stop : Nil
-      begin
-        @service.stop
-      ensure
-        if prev = @prev_server_env
-          ENV["MICRO_SERVER_ADDRESS"] = prev
-        else
-          ENV.delete("MICRO_SERVER_ADDRESS")
-        end
+      @service.stop
+    ensure
+      if prev = @prev_server_env
+        ENV["MICRO_SERVER_ADDRESS"] = prev
+      else
+        ENV.delete("MICRO_SERVER_ADDRESS")
       end
     end
 

@@ -65,5 +65,3 @@ describe Micro::Stdlib::Middleware::JWTAuthMiddleware do
     ctx.response.status.should eq 401
   end
 end
-
-

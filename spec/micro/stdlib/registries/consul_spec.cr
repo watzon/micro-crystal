@@ -23,5 +23,3 @@ describe Micro::Stdlib::Registries::ConsulRegistry do
     registry.deregister(service)
   end
 end
-
-

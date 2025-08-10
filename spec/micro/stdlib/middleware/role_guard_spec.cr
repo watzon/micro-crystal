@@ -40,5 +40,3 @@ describe Micro::Stdlib::Middleware::RoleGuard do
     ctx.response.status.should eq 403
   end
 end
-
-

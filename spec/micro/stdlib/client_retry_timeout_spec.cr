@@ -23,7 +23,7 @@ end
 
 describe Micro::Stdlib::Client do
   it "maps timeout to 504 (no response)" do
-    server = FakeLoopbackServer.new(->(req : Micro::Core::TransportRequest) {
+    server = FakeLoopbackServer.new(->(_req : Micro::Core::TransportRequest) {
       # Fast response so the client timeout is the only limiter
       Micro::Core::TransportResponse.new(status: 200, body: %({"ok":true}).to_slice)
     })
@@ -50,7 +50,7 @@ describe Micro::Stdlib::Client do
 
   it "passes through 4xx without retry" do
     attempts = 0
-    server = FakeLoopbackServer.new(->(req : Micro::Core::TransportRequest) {
+    server = FakeLoopbackServer.new(->(_req : Micro::Core::TransportRequest) {
       attempts += 1
       Micro::Core::TransportResponse.new(status: 400, body: %({"error":"bad"}).to_slice)
     })
@@ -74,5 +74,3 @@ describe Micro::Stdlib::Client do
     end
   end
 end
-
-

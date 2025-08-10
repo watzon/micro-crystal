@@ -175,9 +175,9 @@ module Micro::Stdlib::Testing
 
       # Detect chunked transfer
       if headers_str.includes?("Transfer-Encoding: chunked")
-        return parse_chunked_body(body_part)
+        parse_chunked_body(body_part)
       else
-        return body_part
+        body_part
       end
     end
 

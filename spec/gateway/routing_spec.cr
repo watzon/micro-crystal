@@ -100,4 +100,3 @@ describe Micro::Gateway::APIGateway do
     svc.try(&.stop)
   end
 end
-

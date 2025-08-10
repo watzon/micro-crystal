@@ -14,5 +14,3 @@ describe Micro::Stdlib::Metrics::PrometheusMetricsCollector do
     text.should contain("queue_depth 5")
   end
 end
-
-

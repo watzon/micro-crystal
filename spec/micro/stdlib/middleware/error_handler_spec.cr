@@ -8,12 +8,10 @@ describe Micro::Stdlib::Middleware::ErrorHandlerMiddleware do
     ctx = Micro::Core::Context.new(req, res)
 
     mw = Micro::Stdlib::Middleware::ErrorHandlerMiddleware.new
-    mw.call(ctx, ->(c : Micro::Core::Context) { raise ArgumentError.new("bad") })
+    mw.call(ctx, ->(_c : Micro::Core::Context) { raise ArgumentError.new("bad") })
 
     ctx.response.status.should eq 400
     body = JSON.parse(String.new(Micro::Core::MessageEncoder.response_body_to_bytes(ctx.response.body)))
     body["type"].as_s.should eq "ArgumentError"
   end
 end
-
-

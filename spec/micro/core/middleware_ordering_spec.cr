@@ -50,5 +50,3 @@ describe Micro::Core::MiddlewareChain do
     ]
   end
 end
-
-

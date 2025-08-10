@@ -31,5 +31,3 @@ describe Micro::Macros::ErrorHandling do
     rbody["retry_after"]?.should eq("3")
   end
 end
-
-
