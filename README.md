@@ -19,6 +19,7 @@ A batteries-included microservice toolkit for Crystal that mirrors and improves 
     - [Service Discovery \& Addressing](#service-discovery--addressing)
   - [Why µCrystal vs Lucky/Athena?](#why-µcrystal-vs-luckyathena)
   - [API](#api)
+- [Documentation](#documentation)
   - [Examples](#examples)
   - [Maintainers](#maintainers)
   - [Contributing](#contributing)
@@ -161,6 +162,13 @@ Annotations for macro-driven development:
 - `@[Micro::Service]` — declare a service (name, version, middleware)
 - `@[Micro::Method]` — expose a method as RPC endpoint
 - `@[Micro::Subscribe]` — subscribe to broker topics
+
+## Documentation
+
+- Getting started: [docs/getting-started.md](./docs/getting-started.md)
+- Guides: [docs/guides/](./docs/guides/)
+- Concepts: [docs/concepts/](./docs/concepts/)
+- Reference: [docs/reference/](./docs/reference/)
 
 ## Examples
 
