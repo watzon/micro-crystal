@@ -2,6 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/watzon/micro-crystal)](https://github.com/watzon/micro-crystal/blob/main/LICENSE)
 [![Crystal Version](https://img.shields.io/badge/crystal-%3E%3D%201.12.0-brightgreen)](https://crystal-lang.org/)
+[![CI](https://github.com/watzon/micro-crystal/actions/workflows/ci.yml/badge.svg)](https://github.com/watzon/micro-crystal/actions/workflows/ci.yml)
 
 A batteries-included microservice toolkit for Crystal that mirrors and improves upon Go-Micro.
 
